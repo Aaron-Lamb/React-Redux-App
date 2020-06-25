@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import SearchForm from './components/SearchForm';
+import PetStore from './components/PetStore';
+import Cart from './components/Cart';
+import './App.css'
+import { connect } from 'react-redux';
+import { addItem, removeItem } from './actions/index';
 
-function App() {
+function App(props) {
+  const {addItem, removeItem, cart, petStore } = props;
+
+  const addCart = item => {
+    addItem(item)
+  }
+
+  const removeCart = item => {
+    removeItem(item)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SearchForm />
+        <PetStore petStore={petStore} addItem={addCart}/>
+        <Cart cart={cart} removeItem={removeCart} />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return{
+    petStore: state.petStore,
+    cart: state.cart
+  }
+}
+
+const mapDispatchToProps = { addItem, removeItem };
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
