@@ -6,7 +6,7 @@ const Cart = props => {
         <div>
             {props.cart.map(item => {
                 return(
-                    <Item removeItem={props.removeItem} item={item} />
+                    <Item removeCart={props.removeCart} item={item} />
                 )
             })}
         </div>

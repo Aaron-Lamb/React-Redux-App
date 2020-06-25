@@ -20,8 +20,8 @@ function App(props) {
   return (
     <div className="App">
         <SearchForm />
-        <PetStore petStore={petStore} addItem={addCart}/>
-        <Cart cart={cart} removeItem={removeCart} />
+        <PetStore petStore={petStore} addCart={addCart}/>
+        <Cart cart={cart} removeCart={removeCart} />
     </div>
   );
 }
