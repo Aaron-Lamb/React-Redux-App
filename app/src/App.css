@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+
